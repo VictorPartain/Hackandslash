@@ -3,6 +3,8 @@ import barbarian
 # from mage import hero_attacks
 # from mage import hero_stats
 # from mage import hero_buffs
+#todo fix bad barbarian input.
+#todo All if block need an else statement that forces the user back through.
 
 hero_stats = barbarian.hero_stats()
 hero_attacks = barbarian.hero_attacks()
@@ -26,12 +28,17 @@ minotaur_dmg = monster.minotaur_stats()["minotaur_dmg"]
 blob_health = monster.blob_stats()["blob_health"]
 blob_dmg = monster.blob_stats()["blob_dmg"]
 # blob_attacks = monster.blob_attacks()[" "]
+#todo: What are my hero that i can choose from?
 hero = input("Please chose your hero\n")
-if hero == "Barbarian":
+hero = hero.lower()
+
+if hero == "barbarian":
     print("You have chosen your hero")
     print("A goblin has appeared please use on of your skills")
     print("Here are your skills")
 
+#todo: Change this to take in the class attacks
+#todo: What is the user supposed to do??
 while not health <= 0:
     print(hero_attacks)
     attack = input(" ")
@@ -54,11 +61,13 @@ while not health <= 0:
         if goblin_health <= 0:
             print("you have won")
             break
+#todo: There is no newline on the question.
 door = input("Please chose a door left or right")
 
 if door == "left":
     print("a skeleton emerges from the shadows")
     print("it is time to fight again")
+    #todo Why is it saying remainding? did it fight me before?
     print(f"the skeleton has {skeleton_health} health remaining good luck hero")
     while not health <= 0:
         print(hero_attacks)
@@ -101,7 +110,8 @@ elif door == "right":
         if skeleton_health <= 0:
             print("you have won")
             break
-
+#todo: This is broken logic in your if statement.
+#todo: What type of door left or right, blue or red. ect ...
 door2 = input("you must choose another door adventurer")
 if door2 == "right":
     print("a poltergeist appears from the floor")
@@ -124,7 +134,8 @@ if door2 == "right":
         if troll_health <= 0:
             print("you have won")
             break
-
+#todo: adding spacing and new lines to have it read smoother
+#todo: Does it matter that the player knows about negivate number of health or just they won?
 if door2 == "left":
     print("A troll is waiting for you prepared to attack")
     print("get ready to fight adventurer")
