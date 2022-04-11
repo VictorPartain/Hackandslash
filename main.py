@@ -243,3 +243,4 @@ if boss_door == "continue":
             print("you have won")
             print("Congratulations on your victory")
             exit()
+print("TEST")
