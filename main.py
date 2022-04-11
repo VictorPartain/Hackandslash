@@ -1,13 +1,12 @@
 import monster
-from barbarian import hero_stats
-from barbarian import hero_attacks
-from barbarian import hero_buffs
+import barbarian
 # from mage import hero_attacks
 # from mage import hero_stats
 # from mage import hero_buffs
-hero_stats = hero_stats()
-hero_attacks = hero_attacks()
-hero_buffs = hero_buffs()
+
+hero_stats = barbarian.hero_stats()
+hero_attacks = barbarian.hero_attacks()
+hero_buffs = barbarian.hero_buffs()
 health = hero_stats["barb_health"]
 slash = hero_attacks["slash"]
 enrage = hero_buffs["enrage"]
