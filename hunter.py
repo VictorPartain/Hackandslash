@@ -3,8 +3,8 @@ hunter_health = 200
 
 def hero_stats():
     return{
-        "hunter_dmg": 200,
-        "hunter_health": 200
+        "dmg": 200,
+        "health": 200
     }
 def hero_attacks():
     return{
@@ -12,4 +12,8 @@ def hero_attacks():
     }
 
 def hero_buffs():
-    pass
+   return{
+        "heal": hero_stats()["health"] * 0.30
+   }
+
+

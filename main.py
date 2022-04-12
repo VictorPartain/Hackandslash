@@ -1,17 +1,9 @@
+import mage
 import monster
 import barbarian
-# from mage import hero_attacks
-# from mage import hero_stats
-# from mage import hero_buffs
+import hunter
 #todo fix bad barbarian input.
 #todo All if block need an else statement that forces the user back through.
-
-hero_stats = barbarian.hero_stats()
-hero_attacks = barbarian.hero_attacks()
-hero_buffs = barbarian.hero_buffs()
-health = hero_stats["barb_health"]
-slash = hero_attacks["slash"]
-enrage = hero_buffs["enrage"]
 goblin_health = monster.goblin_stats()["goblin_health"]
 goblin_dmg = monster.goblin_stats()["goblin_dmg"]
 skeleton_health = monster.skeleton_stats()["skeleton_health"]
@@ -28,22 +20,54 @@ minotaur_dmg = monster.minotaur_stats()["minotaur_dmg"]
 blob_health = monster.blob_stats()["blob_health"]
 blob_dmg = monster.blob_stats()["blob_dmg"]
 # blob_attacks = monster.blob_attacks()[" "]
-#todo: What are my hero that i can choose from?
-hero = input("Please chose your hero\n")
-hero = hero.lower()
+print("the hero's you can chose from are \n Barbarian \n Mage \n Hunter")
 
-if hero == "barbarian":
-    print("You have chosen your hero")
-    print("A goblin has appeared please use on of your skills")
-    print("Here are your skills")
 
-#todo: Change this to take in the class attacks
-#todo: What is the user supposed to do??
+while True:
+    hero = input("Please chose your hero\n")
+    hero = hero.lower()
+    if hero == "barbarian":
+        print("You have chosen your hero")
+        print("A goblin has appeared please use one of your skills")
+        print("Here are your skills")
+        hero_stats = barbarian.hero_stats()
+        hero_attacks = barbarian.hero_attacks()
+        hero_buffs = barbarian.hero_buffs()
+        break
+    elif hero == "mage":
+        print("you have chosen mage")
+        print("a goblin has appeared please use one of your skills")
+        print("Here are your skills")
+        hero_stats = mage.hero_stats()
+        hero_attacks = mage.hero_attacks()
+        hero_buffs = mage.hero_buffs()
+        break
+    elif hero == "hunter":
+        print("you have chosen hunter")
+        print("a goblin has appeared please use one of your skills")
+        print("Here are your skills")
+        hero_stats = hunter.hero_stats()
+        hero_attacks = hunter.hero_attacks()
+        hero_buffs = hunter.hero_buffs()
+        break
+    else:
+        print("you need to chose a hero\n Barbarian \n Mage \n Hunter")
+
+health = hero_stats["health"]
+hero_attacks = hero_attacks
+hero_buffs = hero_buffs
+
+
 while not health <= 0:
     print(hero_attacks)
-    attack = input(" ")
-    if attack == "slash":
-        goblin_health = goblin_health - slash
+    print(hero_buffs)
+    choice = input("please chose a skill form the list above\n")
+    if choice in hero_buffs.keys():
+        print(f"you used{choice}")
+        health = health + hero_buffs(choice)
+        print(health)
+    if choice in hero_attacks.keys():
+        goblin_health = goblin_health - hero_attacks[choice]
         health = health - goblin_dmg
         print(f"the goblin has {goblin_health} health remaining")
         print(f"you have {health} health remaining")
@@ -61,19 +85,17 @@ while not health <= 0:
         if goblin_health <= 0:
             print("you have won")
             break
-#todo: There is no newline on the question.
-door = input("Please chose a door left or right")
+door = input("Please chose a door left or right \n")
 
 if door == "left":
     print("a skeleton emerges from the shadows")
     print("it is time to fight again")
-    #todo Why is it saying remainding? did it fight me before?
-    print(f"the skeleton has {skeleton_health} health remaining good luck hero")
+    print(f"the skeleton has {skeleton_health} health  good luck hero")
     while not health <= 0:
         print(hero_attacks)
-        attack = input(" ")
-        if attack == "slash":
-            skeleton_health = skeleton_health - slash
+        choice = input(" ")
+        if choice in hero_attacks.keys():
+            skeleton_health = skeleton_health - hero_attacks[choice]
             health = health - skeleton_dmg
             print(f"you have {health} health remaining")
             print(f"the skeleton has {skeleton_health} health remaining")
@@ -94,9 +116,15 @@ elif door == "right":
     print(f"the skeleton has {skeleton_health} health remaining good luck hero")
     while not health <= 0:
         print(hero_attacks)
-        attack = input(" ")
-        if attack == "slash":
-            skeleton_health = skeleton_health - slash
+        print(hero_buffs)
+        choice = input()
+        if choice in hero_buffs.keys():
+            health = health + hero_buffs[choice]
+            health = health - skeleton_dmg
+            print(f"you used {choice}")
+
+        if choice in hero_attacks.keys():
+            skeleton_health = skeleton_health - hero_attacks[choice]
             health = health - skeleton_dmg
             print(f"you have {health} health remaining")
             print(f"the skeleton has {skeleton_health} health remaining")
@@ -110,17 +138,18 @@ elif door == "right":
         if skeleton_health <= 0:
             print("you have won")
             break
+else:
+    print("that isn't an option")
 #todo: This is broken logic in your if statement.
-#todo: What type of door left or right, blue or red. ect ...
-door2 = input("you must choose another door adventurer")
+door2 = input("you must choose another door adventurer \n left or right \n")
 if door2 == "right":
     print("a poltergeist appears from the floor")
     print("prepare your self brave hero")
     while not health <= 0:
         print(hero_attacks)
-        attack = input(" ")
-        if attack == "slash":
-            poltergeist_health = poltergeist_health - slash
+        choice = input(" ")
+        if choice in hero_attacks.keys():
+            poltergeist_health = poltergeist_health - hero_attacks[choice]
             health = health - poltergeist_dmg
             print(f"you have {health} health remaining")
             print(f"the troll has {poltergeist_health} remaining")
@@ -135,15 +164,15 @@ if door2 == "right":
             print("you have won")
             break
 #todo: adding spacing and new lines to have it read smoother
-#todo: Does it matter that the player knows about negivate number of health or just they won?
+#todo: Does it matter that the player knows about negative number of health or just they won?
 if door2 == "left":
     print("A troll is waiting for you prepared to attack")
     print("get ready to fight adventurer")
     while not health <= 0:
         print(hero_attacks)
-        attack = input(" ")
-        if attack == "slash":
-            troll_health = troll_health - slash
+        choice = input(" ")
+        if choice in hero_attacks.keys():
+            troll_health = troll_health - hero_attacks[choice]
             health = health - troll_dmg
             print(f"you have {health} health remaining")
             print(f"the troll has {troll_health} remaining")
@@ -157,7 +186,8 @@ if door2 == "left":
         if troll_health <= 0:
             print("you have won")
             break
-
+else:
+    print("that is not an option")
 print("adventurer your fight is almost over now you must chose between 3 choices \n right, left, and center")
 door3 = input("please choose your door")
 if door3 == "right":
@@ -166,9 +196,9 @@ if door3 == "right":
           "this.")
     while not health <= 0:
         print(hero_attacks)
-        attack = input(" ")
-        if attack == "slash":
-            minotaur_health = minotaur_health - slash
+        choice = input(" ")
+        if choice in hero_attacks.keys():
+            minotaur_health = minotaur_health - hero_attacks[choice]
             health = health - minotaur_dmg
             print(f"hero you have {health} health remaining")
             print(f"the minotaur has {minotaur_health} health remaining")
@@ -189,9 +219,9 @@ if door3 == "left":
           "this.")
     while not health <= 0:
         print(hero_attacks)
-        attack = input(" ")
-        if attack == "slash":
-            minotaur_health = minotaur_health - slash
+        choice = input(" ")
+        if choice in hero_attacks.keys():
+            minotaur_health = minotaur_health - hero_attacks[choice]
             health = health - minotaur_dmg
             print(f"hero you have {health} health remaining")
             print(f"the minotaur has {minotaur_health} health remaining")
@@ -213,9 +243,9 @@ if door3 == "center":
     print("brace yourself adventurer and get ready for a fight")
     while not health <= 0:
         print(hero_attacks)
-        attack = input(" ")
-        if attack == "slash":
-            vampire_health = vampire_health - slash
+        choice = input(" ")
+        if choice == "slash":
+            vampire_health = vampire_health - hero_attacks[choice]
             health = health - vampire_dmg
             print(f"you have {health} health remaining")
             print(f"the vampire has {vampire_health} health remaining")
@@ -229,6 +259,8 @@ if door3 == "center":
         if vampire_health <= 0:
             print("you have won")
             break
+else:
+    print("that is not an option")
 print("there is only one door remaining please type continue")
 boss_door = input(" ")
 if boss_door == "continue":
@@ -236,9 +268,9 @@ if boss_door == "continue":
     print("the boss has awakened")
     while not health <= 0:
         print(hero_attacks)
-        attack = input(" ")
-        if attack == "slash":
-            blob_health = blob_health - slash
+        choice = input(" ")
+        if choice in hero_attacks.keys():
+            blob_health = blob_health - hero_attacks[choice]
             health = health - blob_dmg
             print(f"you have {health} health remaining hero you got this")
             print(f"the blob has {blob_health} health remaining")
