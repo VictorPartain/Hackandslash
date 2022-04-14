@@ -17,3 +17,11 @@ def hero_buffs():
    }
 
 
+def hero_items():
+    return {
+        "health_potion": {
+            "potion_heal": 30,
+            "uses": 3,
+        }
+    }
+

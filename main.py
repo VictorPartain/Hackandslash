@@ -33,6 +33,7 @@ while True:
         hero_stats = barbarian.hero_stats()
         hero_attacks = barbarian.hero_attacks()
         hero_buffs = barbarian.hero_buffs()
+        hero_items = barbarian.hero_items()
         break
     elif hero == "mage":
         print("you have chosen mage")
@@ -41,6 +42,7 @@ while True:
         hero_stats = mage.hero_stats()
         hero_attacks = mage.hero_attacks()
         hero_buffs = mage.hero_buffs()
+        hero_items = mage.hero_items()
         break
     elif hero == "hunter":
         print("you have chosen hunter")
@@ -49,6 +51,7 @@ while True:
         hero_stats = hunter.hero_stats()
         hero_attacks = hunter.hero_attacks()
         hero_buffs = hunter.hero_buffs()
+        hero_items = hunter.hero_items()
         break
     else:
         print("you need to chose a hero\n Barbarian \n Mage \n Hunter")
@@ -56,20 +59,34 @@ while True:
 health = hero_stats["health"]
 hero_attacks = hero_attacks
 hero_buffs = hero_buffs
+counter = hero_items["health_potion"]["uses"]
 
 while not health <= 0:
     print(hero_attacks)
     print(hero_buffs)
+    print(hero_items)
     choice = input("please chose a skill form the list above\n")
-    if choice in hero_buffs.keys():
+    if choice in hero_items.keys():
         print(f"you used {choice}")
-        health = health + hero_buffs[choice]
-        print(health)
+        counter = counter - 1
+        temp_health = health + hero_items[choice]["potion_heal"]
+        if counter == 0:
+            print("your health potion is empty")
+            health = health - goblin_dmg
+            print(f"you have took{goblin_dmg}")
+
+        if temp_health > health:
+            health = health
+        else:
+            health = temp_health
     if choice in hero_attacks.keys():
         goblin_health = goblin_health - hero_attacks[choice]
         health = health - goblin_dmg
         print(f"the goblin has {goblin_health} health remaining")
         print(f"you have {health} health remaining")
+    if choice in hero_buffs.keys():
+        hero_attacks = hero_attacks * hero_buffs[choice]
+        health = health - goblin_dmg
     else:
         health = health - goblin_dmg
         print(f"you have took{goblin_dmg}")
@@ -88,14 +105,38 @@ while not health <= 0:
         print("you have won")
         break
 
-door = input("what door would you like to chose")
+door = input("what door would you like to chose \n left or right \n")
+while True:
+    if door == "left":
+        break
+    elif door == "right":
+        break
+    else:
+        print("please choose a valid door")
+        door = input("what door would you like to chose \n left or right \n")
+
 if door == "left":
     print("a skeleton emerges from the shadows")
     print("it is time to fight again")
     print(f"the skeleton has {skeleton_health} health  good luck hero")
     while not health <= 0:
         print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
         choice = input(" ")
+        if choice in hero_items.keys():
+            print(f"you used {choice}")
+            counter = counter - 1
+            temp_health = health + hero_items[choice]["potion_heal"]
+            if counter == 0:
+                print("your health potion is empty")
+                health = health - goblin_dmg
+                print(f"you have took{goblin_dmg}")
+
+            if temp_health > health:
+                health = health
+            else:
+                health = temp_health
         if choice in hero_attacks.keys():
             skeleton_health = skeleton_health - hero_attacks[choice]
             health = health - skeleton_dmg
@@ -119,7 +160,22 @@ elif door == "right":
     while not health <= 0:
         print(hero_attacks)
         print(hero_buffs)
+        print(hero_items)
         choice = input()
+        if choice in hero_items.keys():
+            print(f"you used {choice}")
+            counter = counter - 1
+            temp_health = health + hero_items[choice]["potion_heal"]
+            if counter == 0:
+                print("your health potion is empty")
+                health = health - goblin_dmg
+                print(f"you have took{goblin_dmg}")
+
+            if temp_health > health:
+                health = health
+            else:
+                health = temp_health
+
         if choice in hero_buffs.keys():
             health = health + hero_buffs[choice]
             health = health - skeleton_dmg
@@ -140,70 +196,115 @@ elif door == "right":
         if skeleton_health <= 0:
             print("you have won")
             break
-else:
-    print("that isn't an option")
 # todo: This is broken logic in your if statement.
+door2 = input("what door would you like to chose \n left or right \n")
+while True:
+    if door2 == "left":
+        break
+    elif door2 == "right":
+        break
+    else:
+        print("please choose a valid door")
+        door2 = input("what door would you like to chose \n left or right \n")
 
-    door2 = input("you must choose another door adventurer \n left or right \n")
-    if door2 == "right":
-        print("a poltergeist appears from the floor")
-        print("prepare your self brave hero")
-        while not health <= 0:
-            print(hero_attacks)
-            choice = input(" ")
-            if choice in hero_attacks.keys():
-                poltergeist_health = poltergeist_health - hero_attacks[choice]
-                health = health - poltergeist_dmg
-                print(f"you have {health} health remaining")
-                print(f"the troll has {poltergeist_health} remaining")
+if door2 == "right":
+    print("a poltergeist appears from the floor")
+    print("prepare your self brave hero")
+    while not health <= 0:
+        print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
+        choice = input(" ")
+        if choice in hero_items.keys():
+            print(f"you used {choice}")
+            counter = counter - 1
+            temp_health = health + hero_items[choice]["potion_heal"]
+            if counter == 0:
+                print("your health potion is empty")
+                health = health - goblin_dmg
+                print(f"you have took{goblin_dmg}")
+
+            if temp_health > health:
+                health = health
             else:
-                print("there is not an attack named that")
-                health = health - poltergeist_dmg
-                print(f"you have taken{poltergeist_dmg} you have {health} remaining")
-            if health <= 0:
-                print("you have died")
-                exit()
-            if troll_health <= 0:
-                print("you have won")
-                break
+                health = temp_health
+        if choice in hero_attacks.keys():
+            poltergeist_health = poltergeist_health - hero_attacks[choice]
+            health = health - poltergeist_dmg
+            print(f"you have {health} health remaining")
+            print(f"the troll has {poltergeist_health} remaining")
+        else:
+            print("there is not an attack named that")
+            health = health - poltergeist_dmg
+            print(f"you have taken{poltergeist_dmg} you have {health} remaining")
+        if health <= 0:
+            print("you have died")
+            exit()
+        if troll_health <= 0:
+            print("you have won")
+            break
     # todo: adding spacing and new lines to have it read smoother
     # todo: Does it matter that the player knows about negative number of health or just they won?
-    if door2 == "left":
-        print("A troll is waiting for you prepared to attack")
-        print("get ready to fight adventurer")
-        while not health <= 0:
-            print(hero_attacks)
-            choice = input(" ")
-            if choice in hero_attacks.keys():
-                troll_health = troll_health - hero_attacks[choice]
-                health = health - troll_dmg
-                print(f"you have {health} health remaining")
-                if troll_health < 0:
-                    print("you have won")
-                else:
-                    print(f"the troll has {troll_health} remaining")
-            else:
-                print("there is not attacked named that")
-                health = health - troll_dmg
-                print(f"you took {troll_dmg} damage and have {health} health remaining")
-            if health <= 0:
-                print("you have died")
-                exit()
-            if troll_health <= 0:
+if door2 == "left":
+    print("A troll is waiting for you prepared to attack")
+    print("get ready to fight adventurer")
+    while not health <= 0:
+        print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
+        choice = input(" ")
+        if choice in hero_attacks.keys():
+            troll_health = troll_health - hero_attacks[choice]
+            health = health - troll_dmg
+            print(f"you have {health} health remaining")
+            if troll_health < 0:
                 print("you have won")
-                break
-    else:
-        print("please chose a valid door they are \n right and left\n")
+            else:
+                print(f"the troll has {troll_health} remaining")
+        else:
+            print("there is not attacked named that")
+            health = health - troll_dmg
+            print(f"you took {troll_dmg} damage and have {health} health remaining")
+        if health <= 0:
+            print("you have died")
+            exit()
+        if troll_health <= 0:
+            print("you have won")
+            break
 
-print("adventurer your fight is almost over now you must chose between 3 choices \n right, left, and center")
-door3 = input("please choose your door\n")
+door3 = input("what door would you like to chose \n left , right or center \n")
+while True:
+    if door3 == "left":
+        break
+    elif door3 == "right":
+        break
+    elif door3 == "center":
+        break
+    else:
+        print("please choose a valid door")
+        door = input("what door would you like to chose \n left, right or center\n")
 if door3 == "right":
     print("hero you have chosen the wrong door \n you must now fight the minotaur in his own territory \n I wish you "
           "the best of luck adventurer,\n also the minotaur has its own unique skill be aware of "
           "this.")
     while not health <= 0:
         print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
         choice = input(" ")
+        if choice in hero_items.keys():
+            print(f"you used {choice}")
+            counter = counter - 1
+            temp_health = health + hero_items[choice]["potion_heal"]
+            if counter == 0:
+                print("your health potion is empty")
+                health = health - goblin_dmg
+                print(f"you have took{goblin_dmg}")
+
+            if temp_health > health:
+                health = health
+            else:
+                health = temp_health
         if choice in hero_attacks.keys():
             minotaur_health = minotaur_health - hero_attacks[choice]
             health = health - minotaur_dmg
@@ -226,7 +327,22 @@ if door3 == "left":
           "this.")
     while not health <= 0:
         print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
         choice = input(" ")
+        if choice in hero_items.keys():
+            print(f"you used {choice}")
+            counter = counter - 1
+            temp_health = health + hero_items[choice]["potion_heal"]
+            if counter == 0:
+                print("your health potion is empty")
+                health = health - goblin_dmg
+                print(f"you have took{goblin_dmg}")
+
+            if temp_health > health:
+                health = health
+            else:
+                health = temp_health
         if choice in hero_attacks.keys():
             minotaur_health = minotaur_health - hero_attacks[choice]
             health = health - minotaur_dmg
@@ -250,8 +366,23 @@ if door3 == "center":
     print("brace yourself adventurer and get ready for a fight")
     while not health <= 0:
         print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
         choice = input(" ")
-        if choice == "slash":
+        if choice in hero_items.keys():
+            print(f"you used {choice}")
+            counter = counter - 1
+            temp_health = health + hero_items[choice]["potion_heal"]
+            if counter == 0:
+                print("your health potion is empty")
+                health = health - goblin_dmg
+                print(f"you have took{goblin_dmg}")
+
+            if temp_health > health:
+                health = health
+            else:
+                health = temp_health
+        if choice in hero_attacks.keys():
             vampire_health = vampire_health - hero_attacks[choice]
             health = health - vampire_dmg
             print(f"you have {health} health remaining")
@@ -266,7 +397,13 @@ if door3 == "center":
         if vampire_health <= 0:
             print("you have won")
             break
-
+boss_door = input("there is only one door remaining please type continue \n")
+while True:
+    if door == "continue":
+        break
+    else:
+        print("please choose a valid door")
+        door = input("please type continue \n")
 print("there is only one door remaining please type continue")
 boss_door = input(" ")
 if boss_door == "continue":
@@ -274,7 +411,22 @@ if boss_door == "continue":
     print("the boss has awakened")
     while not health <= 0:
         print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
         choice = input(" ")
+        if choice in hero_items.keys():
+            print(f"you used {choice}")
+            counter = counter - 1
+            temp_health = health + hero_items[choice]["potion_heal"]
+            if counter == 0:
+                print("your health potion is empty")
+                health = health - goblin_dmg
+                print(f"you have took{goblin_dmg}")
+
+            if temp_health > health:
+                health = health
+            else:
+                health = temp_health
         if choice in hero_attacks.keys():
             blob_health = blob_health - hero_attacks[choice]
             health = health - blob_dmg
@@ -291,5 +443,3 @@ if boss_door == "continue":
             print("you have won")
             print("Congratulations on your victory")
             exit()
-
-print("TEST")

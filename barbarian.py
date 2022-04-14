@@ -15,6 +15,14 @@ def hero_attacks():
 def hero_buffs():
     return {
         "enrage": 3,
-        "heal": hero_stats()["health"] * 0.30
 
+    }
+
+
+def hero_items():
+    return {
+        "health_potion": {
+            "potion_heal": 30,
+            "uses": 3,
+        }
     }
