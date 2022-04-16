@@ -24,6 +24,7 @@ minotaur_dmg = monster.minotaur_stats()["minotaur_dmg"]
 # minotaur_attacks = monster.minotaur_attacks()[" "]
 blob_health = monster.blob_stats()["blob_health"]
 blob_dmg = monster.blob_stats()["blob_dmg"]
+troll_name = monster.troll_stats()["name"]
 # door = door.door_func()
 
 # blob_attacks = monster.blob_attacks()[" "]
@@ -65,6 +66,8 @@ combat_health = hero_stats["health"]
 hero_attacks = hero_attacks
 hero_buffs = hero_buffs
 monster_name = monster.goblin_stats()["name"]
+vampire_name = monster.vampire_stats()["name"]
+ghost_name = monster.ghost_stats()["name"]
 print(monster_name)
 counter = hero_items["health_potion"]["uses"]
 # fight.fight(hero_stats, hero_items, hero_buffs, hero_attacks, goblin_dmg, goblin_health)
@@ -76,7 +79,17 @@ if door_choice == "right":
 if door_choice == "left":
     fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
             monster_dmg=skeleton_dmg, monster_health=skeleton_health, monster_name=skeleton_name)
+door_choice_two = door.three_door()
+if door_choice_two == "left":
+    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
+            monster_dmg=troll_dmg, monster_health=troll_health, monster_name=troll_name)
+if door_choice_two == "center":
+    fight.fight(hero_stats = hero_stats, hero_items = hero_items, hero_buffs = hero_buffs, hero_attacks = hero_attacks,
+    monster_dmg = vampire_dmg, monster_health = vampire_health, monster_name = vampire_name)
 
+if door_choice_two == "left":
+    fight.fight(hero_stats = hero_stats, hero_items = hero_items, hero_buffs = hero_buffs, hero_attacks = hero_attacks,
+    monster_dmg = ghost_dmg, monster_health = ghost_health, monster_name = ghost_name)
 # door = input("what door would you like to chose \n left or right \n")
 # while True:
 #     if door == "left":
