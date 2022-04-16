@@ -25,3 +25,13 @@ def three_door():
         else:
             print("you have not chosen a valid door, please pick a valid door")
             door = input("Choose a door \n left, right or center \n")
+
+
+def boss_door():
+    door = input("there is only one door remaining, \n please type continue to continue to the boss \n")
+    while True:
+        if door == "continue":
+            return door
+        else:
+            print("you did not choose a valid door, please try again")
+            door = input("there is only one door remaining, \n please type continue to continue to the boss \n")
