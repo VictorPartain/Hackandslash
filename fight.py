@@ -3,9 +3,7 @@ def fight(hero_stats, hero_items, hero_buffs, hero_attacks, monster_dmg, monster
     monster_dmg = monster_dmg
     counter = hero_items["health_potion"]["uses"]
     combat_health = hero_stats["health"]
-
     while not combat_health <= 0:
-        print("it works")
         print(hero_attacks)
         print(hero_buffs)
         print(hero_items)
