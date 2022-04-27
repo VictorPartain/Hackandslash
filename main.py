@@ -6,6 +6,8 @@ import barbarian
 import hunter
 import fight
 import door
+
+intro.loading_screen()
 intro.intro_to_game()
 player = intro.name_of_adventurer()
 print(f"Ahhh a worthy name {player} \nworthy of the champion")
@@ -33,6 +35,7 @@ blob_dmg = monster.blob_stats()["blob_dmg"]
 troll_name = monster.troll_stats()["name"]
 minotaur_name = monster.minotaur_stats()["name"]
 blob_name = monster.blob_stats()["name"]
+goblin_art =
 # blob_attacks = monster.blob_attacks()[" "]
 print("the hero's you can chose from are \n Barbarian \n Mage \n Hunter")
 while True:
