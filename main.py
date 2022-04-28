@@ -6,7 +6,13 @@ import barbarian
 import hunter
 import fight
 import door
-
+import monster_art
+monster_art.vampire_art()
+monster_art.ghost_art()
+monster_art.troll_art()
+monster_art.skeleton_art()
+monster_art.minotaur_art()
+monster_art.blob_art()
 intro.loading_screen()
 intro.intro_to_game()
 player = intro.name_of_adventurer()
@@ -35,7 +41,6 @@ blob_dmg = monster.blob_stats()["blob_dmg"]
 troll_name = monster.troll_stats()["name"]
 minotaur_name = monster.minotaur_stats()["name"]
 blob_name = monster.blob_stats()["name"]
-goblin_art =
 # blob_attacks = monster.blob_attacks()[" "]
 print("the hero's you can chose from are \n Barbarian \n Mage \n Hunter")
 while True:
