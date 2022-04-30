@@ -38,15 +38,15 @@ def vampire_stats():
     }
 
 
-def blob_stats():
+def dragon_stats():
     return{
-        "blob_dmg": 15,
-        "blob_health": 1000,
-        "name": "blob"
+        "dragon_dmg": 15,
+        "dragon_health": 1000,
+        "name": "dragon"
     }
 
 
-def blob_attacks():
+def dragon_attacks():
     pass
 
 

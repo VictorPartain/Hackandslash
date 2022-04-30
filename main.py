@@ -12,7 +12,7 @@ monster_art.ghost_art()
 monster_art.troll_art()
 monster_art.skeleton_art()
 monster_art.minotaur_art()
-monster_art.blob_art()
+monster_art.dragon_art()
 intro.loading_screen()
 intro.intro_to_game()
 player = intro.name_of_adventurer()
@@ -36,11 +36,11 @@ ghost_dmg = monster.ghost_stats()["ghost_dmg"]
 minotaur_health = monster.minotaur_stats()["minotaur_health"]
 minotaur_dmg = monster.minotaur_stats()["minotaur_dmg"]
 # minotaur_attacks = monster.minotaur_attacks()[" "]
-blob_health = monster.blob_stats()["blob_health"]
-blob_dmg = monster.blob_stats()["blob_dmg"]
+dragon_health = monster.dragon_stats()["dragon_health"]
+dragon_dmg = monster.dragon_stats()["dragon_dmg"]
 troll_name = monster.troll_stats()["name"]
 minotaur_name = monster.minotaur_stats()["name"]
-blob_name = monster.blob_stats()["name"]
+dragon_name = monster.dragon_stats()["name"]
 # blob_attacks = monster.blob_attacks()[" "]
 print("the hero's you can chose from are \n Barbarian \n Mage \n Hunter")
 while True:
@@ -120,6 +120,6 @@ if door_choice_three == "left":
 boss_door = door.boss_door()
 if boss_door == "continue":
     fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
-                monster_dmg=blob_dmg, monster_health=blob_health, monster_name=blob_name)
+                monster_dmg=dragon_dmg, monster_health=dragon_health, monster_name=dragon_name)
 print(f"congratulations on your victory {player}")
 exit()
