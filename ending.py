@@ -11,5 +11,5 @@ _________                                             __          .__           
 
 def ending_text(player):
     print(f"Congratulations on your victory {player}")
-    print("You should be very proud of your self you have done what many have not")
+    print("You should be very proud of your self, you have done what many have not")
     print(f"This is the end for now {player} \nI hope to see you again in the next dungeon")

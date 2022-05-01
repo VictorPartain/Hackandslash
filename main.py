@@ -14,8 +14,7 @@ intro.intro_to_game()
 player = intro.name_of_adventurer()
 print(f"Ahhh a worthy name {player} \nworthy of the champion")
 intro.intro_to_game_part_two(player)
-# todo fix bad barbarian input.
-# todo All if block need an else statement that forces the user back through.
+
 goblin_health = monster.goblin_stats()["goblin_health"]
 goblin_name = monster.goblin_stats()["name"]
 goblin_dmg = monster.goblin_stats()["goblin_dmg"]
@@ -46,36 +45,45 @@ while True:
     hero = hero.lower()
     if hero == "barbarian":
         hero_art.barbarian_art()
-        print("You have chosen your hero")
-        print("Here are your skills")
-        print("To use your skills just type the name of the skill with a lowercase")
-        print("Also when you come to a door please type your choice with lowercase")
         hero_stats = barbarian.hero_stats()
         hero_attacks = barbarian.hero_attacks()
         hero_buffs = barbarian.hero_buffs()
         hero_items = barbarian.hero_items()
+        print("You have chosen your hero")
+        print("Here are your skills")
+        print("To use your skills just type the name of the skill with a lowercase")
+        print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
+        print("Also when you come to a door please type your choice with lowercase")
         break
     elif hero == "mage":
         hero_art.mage_art()
-        print("You have chosen mage")
-        print("Here are your skills")
-        print("To use your skills just type the name of the skill with a lowercase")
-        print("Also when you come to a door please type your choice with lowercase")
         hero_stats = mage.hero_stats()
         hero_attacks = mage.hero_attacks()
         hero_buffs = mage.hero_buffs()
         hero_items = mage.hero_items()
+        print("You have chosen mage")
+        print("Here are your skills")
+        print("To use your skills just type the name of the skill with a lowercase")
+        print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
+        print("Also when you come to a door please type your choice with lowercase")
         break
     elif hero == "hunter":
         hero_art.hunter_art()
-        print("You have chosen hunter")
-        print("Here are your skills")
-        print("To use your skills just type the name of the skill with a lowercase")
-        print("Also when you come to a door please type your choice with lowercase")
         hero_stats = hunter.hero_stats()
         hero_attacks = hunter.hero_attacks()
         hero_buffs = hunter.hero_buffs()
         hero_items = hunter.hero_items()
+        print("You have chosen hunter")
+        print("Here are your skills")
+        print("To use your skills just type the name of the skill with a lowercase")
+        print(hero_attacks)
+        print(hero_buffs)
+        print(hero_items)
+        print("Also when you come to a door please type your choice with lowercase")
         break
     else:
         print("you need to chose a hero\n Barbarian \n Mage \n Hunter")

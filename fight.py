@@ -27,7 +27,14 @@ def fight(hero_stats, hero_items, hero_buffs, hero_attacks, monster_dmg, monster
             print(f"the {monster_name} has {monster_health} health remaining")
             print(f"you have {combat_health} health remaining")
         if choice in hero_buffs.keys():
-            hero_attacks = hero_attacks * hero_buffs[choice]["enrage"]
+            dict[choice]
+            enrage = 3
+            breakpoint()
+            new_hero_attacks = {choice: v*enrage for k, v in hero_buffs}
+            print(new_hero_attacks)
+
+            hero_attacks = new_hero_attacks
+            print(hero_attacks)
         if choice not in hero_attacks.keys() and hero_items.keys() and hero_buffs.keys():
             print("you did not use a valid skill")
             choice = input("please chose a skill from the list above \n")
@@ -36,12 +43,6 @@ def fight(hero_stats, hero_items, hero_buffs, hero_attacks, monster_dmg, monster
             print(f"you have took {monster_dmg} dmg")
             print(combat_health)
 
-            # if attack == "2":
-            #  print(f"your currant damage using slash is {slash}")
-            #    print("The goblin has attacked you")
-            #    barb_health = barb_health - goblin_dmg
-            #    print(f"You have {barb_health} health remaining ")
-
         if combat_health <= 0:
             print("you have died")
             exit()
@@ -49,5 +50,3 @@ def fight(hero_stats, hero_items, hero_buffs, hero_attacks, monster_dmg, monster
         if monster_health <= 0:
             print("you have won")
             break
-
-

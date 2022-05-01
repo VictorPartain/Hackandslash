@@ -14,12 +14,8 @@ def hero_attacks():
 
 def hero_buffs():
     return {
-        "enrage": {
-            "hero_attacks": 40,
-            "enrage": 3
+        "enrage": 3
         }
-
-    }
 
 
 def hero_items():
