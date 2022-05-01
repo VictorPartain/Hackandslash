@@ -27,13 +27,13 @@ def fight(hero_stats, hero_items, hero_buffs, hero_attacks, monster_dmg, monster
             print(f"the {monster_name} has {monster_health} health remaining")
             print(f"you have {combat_health} health remaining")
         if choice in hero_buffs.keys():
-            hero_attacks = hero_attacks * hero_buffs[choice]
+            hero_attacks = hero_attacks * hero_buffs[choice]["enrage"]
         if choice not in hero_attacks.keys() and hero_items.keys() and hero_buffs.keys():
             print("you did not use a valid skill")
             choice = input("please chose a skill from the list above \n")
         else:
             combat_health = combat_health - monster_dmg
-            print(f"you have took{monster_dmg}")
+            print(f"you have took {monster_dmg} dmg")
             print(combat_health)
 
             # if attack == "2":
