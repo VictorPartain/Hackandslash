@@ -1,21 +1,15 @@
 def hero_stats():
     return {
         "dmg": 100,
-        "health": 1000,
+        "health": 500,
         "defense": 30,
     }
 
 
 def hero_attacks():
     return {
-        "slash": 40
+        "slash": 100
     }
-
-
-def hero_buffs():
-    return {
-        "enrage": 3
-        }
 
 
 def hero_items():

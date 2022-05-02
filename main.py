@@ -1,4 +1,8 @@
+import os
+import artwork_mentions
+import hero_description
 import intro
+import loadingscreen
 import mage
 import monster
 import barbarian
@@ -8,13 +12,25 @@ import door
 import monster_art
 import hero_art
 import ending
-intro.loading_screen()
+from time import sleep
+import monster_description
+
+
+def slowprint(msg):
+    for c in msg:
+        print(c, end="", flush=True)
+        sleep(0.06)
+    print()
+
+
+loadingscreen.loading_screen()
+sleep(1)
+os.system('cls')
 intro.intro_to_game()
-
 player = intro.name_of_adventurer()
-print(f"Ahhh a worthy name {player} \nworthy of the champion")
+os.system('cls')
+slowprint(f"Oh-hh a worthy name, {player} \nworthy of the champion")
 intro.intro_to_game_part_two(player)
-
 goblin_health = monster.goblin_stats()["goblin_health"]
 goblin_name = monster.goblin_stats()["name"]
 goblin_dmg = monster.goblin_stats()["goblin_dmg"]
@@ -37,106 +53,148 @@ minotaur_name = monster.minotaur_stats()["name"]
 dragon_name = monster.dragon_stats()["name"]
 vampire_name = monster.vampire_stats()["name"]
 ghost_name = monster.ghost_stats()["name"]
-
-print("the hero's you can chose from are \n Barbarian \n Mage \n Hunter")
-
+print("\n Barbarian \n Mage \n Hunter")
 while True:
     hero = input("Please chose your hero\n")
     hero = hero.lower()
     if hero == "barbarian":
+        os.system('cls')
         hero_art.barbarian_art()
+        hero_description.barbarian_story()
+        os.system('cls')
         hero_stats = barbarian.hero_stats()
         hero_attacks = barbarian.hero_attacks()
-        hero_buffs = barbarian.hero_buffs()
         hero_items = barbarian.hero_items()
-        print("You have chosen your hero")
-        print("Here are your skills")
-        print("To use your skills just type the name of the skill with a lowercase")
-        print(hero_attacks)
-        print(hero_buffs)
-        print(hero_items)
-        print("Also when you come to a door please type your choice with lowercase")
+        slowprint("You have chosen your hero")
+        slowprint("Here are your skills")
+        slowprint(hero_attacks)
+        slowprint(hero_items)
+        slowprint("To use your skills just type the name of the skill")
+        slowprint("Also when you stumble across a door please type your choice")
+        os.system('cls')
         break
     elif hero == "mage":
+        os.system('cls')
         hero_art.mage_art()
+        hero_description.mage_story()
+        os.system('cls')
         hero_stats = mage.hero_stats()
         hero_attacks = mage.hero_attacks()
-        hero_buffs = mage.hero_buffs()
         hero_items = mage.hero_items()
-        print("You have chosen mage")
-        print("Here are your skills")
-        print("To use your skills just type the name of the skill with a lowercase")
-        print(hero_attacks)
-        print(hero_buffs)
-        print(hero_items)
-        print("Also when you come to a door please type your choice with lowercase")
+        slowprint("You have chosen mage")
+        slowprint("Here are your skills")
+        slowprint(hero_attacks)
+        slowprint(hero_items)
+        slowprint("To use your skills just type the name of the skill")
+        slowprint("Also when you come to a door please type your choice")
+        os.system('cls')
         break
     elif hero == "hunter":
+        os.system('cls')
         hero_art.hunter_art()
+        hero_description.hunter_story()
+        os.system('cls')
         hero_stats = hunter.hero_stats()
         hero_attacks = hunter.hero_attacks()
-        hero_buffs = hunter.hero_buffs()
         hero_items = hunter.hero_items()
-        print("You have chosen hunter")
-        print("Here are your skills")
-        print("To use your skills just type the name of the skill with a lowercase")
-        print(hero_attacks)
-        print(hero_buffs)
-        print(hero_items)
-        print("Also when you come to a door please type your choice with lowercase")
+        slowprint("You have chosen hunter")
+        slowprint("Here are your skills")
+        slowprint(hero_attacks)
+        slowprint(hero_items)
+        slowprint("To use your skills just type the name of the skill")
+        slowprint("Also when you come to a door please type your choice")
+        os.system('cls')
         break
     else:
-        print("you need to chose a hero\n Barbarian \n Mage \n Hunter")
+        slowprint("you need to chose a hero\n Barbarian \n Mage \n Hunter")
 
 counter = hero_items["health_potion"]["uses"]
-
+os.system('cls')
+door.two_door_art()
 door_choice = door.two_doors()
+door_choice.lower()
 if door_choice == "right":
-    print("A quick tip to use your attack remember you must type the attack with a lowercase spelling")
+    os.system('cls')
+    monster_description.goblin_description()
     monster_art.goblin_art()
-    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
+    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
                 monster_dmg=goblin_dmg, monster_health=goblin_health, monster_name=goblin_name)
+    sleep(1)
+    os.system('cls')
 
 if door_choice == "left":
+    os.system('cls')
     monster_art.skeleton_art()
-    print("A quick tip to use your attack remember you must type the attack with a lowercase spelling")
-    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
+    monster_description.skeleton_description()
+    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
                 monster_dmg=skeleton_dmg, monster_health=skeleton_health, monster_name=skeleton_name)
+    sleep(1)
+    os.system('cls')
 
-
+door.two_door_art()
 door_choice_two = door.two_doors()
+door_choice_two.lower()
 if door_choice_two == "left":
+    os.system('cls')
     monster_art.troll_art()
-    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
+    monster_description.troll_description()
+    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
                 monster_dmg=troll_dmg, monster_health=troll_health, monster_name=troll_name)
+    sleep(1)
+    os.system('cls')
 
 if door_choice_two == "right":
+    os.system('cls')
     monster_art.ghost_art()
-    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
+    monster_description.ghost_description()
+    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
                 monster_dmg=ghost_dmg, monster_health=ghost_health, monster_name=ghost_name)
+    sleep(1)
+    os.system('cls')
 
-
-door_choice_three = door.two_doors()
+door.three_door_art()
+door_choice_three = door.three_door()
+door_choice_three.lower()
 if door_choice_three == "right":
+    os.system('cls')
+    # add description of fight
     monster_art.minotaur_art()
-    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
+    monster_description.minotaur_description()
+    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
                 monster_dmg=minotaur_dmg, monster_health=troll_health, monster_name=troll_name)
+    sleep(1)
+    os.system('cls')
 if door_choice_three == "center":
+    os.system('cls')
     monster_art.vampire_art()
-    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
+    monster_description.vampire_description()
+    # add description of fight
+    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
                 monster_dmg=vampire_dmg, monster_health=vampire_health, monster_name=vampire_name)
+    sleep(1)
+    os.system('cls')
 
 if door_choice_three == "left":
+    os.system('cls')
     monster_art.minotaur_art()
-    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
+    monster_description.minotaur_description()
+    # add description of fight
+    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
                 monster_dmg=minotaur_dmg, monster_health=minotaur_health, monster_name=minotaur_name)
+    sleep(1)
+    os.system('cls')
 
-
+door.boss_door_art()
 boss_door = door.boss_door()
-if boss_door == "continue":
+boss_door.lower()
+if boss_door == "open":
+    os.system('cls')
     monster_art.dragon_art()
-    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_buffs=hero_buffs, hero_attacks=hero_attacks,
+    monster_description.dragon_description()
+    fight.fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
                 monster_dmg=dragon_dmg, monster_health=dragon_health, monster_name=dragon_name)
-ending.ending_scene()
+loadingscreen.ending_scene()
 ending.ending_text(player)
+sleep(2)
+artwork_mentions.artwork()
 exit()

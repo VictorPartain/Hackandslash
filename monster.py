@@ -41,22 +41,15 @@ def vampire_stats():
 def dragon_stats():
     return{
         "dragon_dmg": 15,
-        "dragon_health": 1000,
+        "dragon_health": 500,
         "name": "dragon"
     }
 
 
-def dragon_attacks():
-    pass
-
-
 def minotaur_stats():
     return{
-        "minotaur_health": 500,
+        "minotaur_health": 400,
         "minotaur_dmg": 20,
         "name": "minotaur"
     }
 
-
-def minotaur_attacks():
-    pass

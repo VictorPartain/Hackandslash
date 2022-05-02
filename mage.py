@@ -1,6 +1,6 @@
 def hero_stats():
     return{
-        "health": 100,
+        "health": 50,
         "dmg": 300
     }
 
@@ -8,12 +8,6 @@ def hero_stats():
 def hero_attacks():
     return{
         "fireball": 300
-    }
-
-
-def hero_buffs():
-    return{
-        "heal": hero_stats()["health"] * 0.30
     }
 
 
