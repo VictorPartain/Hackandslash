@@ -5,8 +5,22 @@ import os
 def slowprint(msg):
     for c in msg:
         print(c, end="", flush=True)
-        sleep(0.06)
+        sleep(0.01)
     print()
+
+
+def intro_three(player):
+    slowprint(f"Hello {player}\n I know that you are feeling courageous but before you begin your adventure,\n I would"
+              f"like to tell you the story of this land. \n In the kingdom of Audia there has existed pantheons of "
+              f"gods and monsters. \nUnlike the Gods and monsters of your world there is not good Gods or monsters,"
+              f"The Gods, Goddesses and monsters of this world only seek to destroy anyone who dares to become The "
+              f"Champion\n You must be wondering what is the Champion, well The Champion is short for The Champion of"
+              f"mankind.\n There have been many Champions before you, some could lift mountains with a single thought,\n"
+              f"while others were gifted in brute strength and could punch a whole through an active Volcano.\n Although"
+              f"these champions were mighty, \n They never achieved their goal, which was to kill all of the pantheons\n"
+              f"That {player} is where you come in.\n I personally shall train you to become the Ultimate Champion.\n So"
+              f"that even the gods will tremble before your power but first we must train you. I already found a dungeon"
+              f"\nLets see what you can do hero")
 
 
 def intro_to_game():
@@ -85,7 +99,7 @@ def minotaur_stats():
 
 def barb_stats():
     return {
-        "dmg": 100,
+        "dmg": 200,
         "health": 500,
         "defense": 30,
     }
@@ -762,7 +776,7 @@ def artwork():
 
 
 loading_screen()
-sleep(1)
+sleep(0.5)
 os.system('cls')
 intro_to_game()
 player = name_of_adventurer()
@@ -949,7 +963,7 @@ if door_choice == "right":
     goblin_description()
     goblin_art()
     fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
-                monster_dmg=goblin_dmg, monster_health=goblin_health, monster_name=goblin_name)
+          monster_dmg=goblin_dmg, monster_health=goblin_health, monster_name=goblin_name)
     sleep(1)
     os.system('cls')
 
@@ -958,7 +972,7 @@ if door_choice == "left":
     skeleton_art()
     skeleton_description()
     fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
-                monster_dmg=skeleton_dmg, monster_health=skeleton_health, monster_name=skeleton_name)
+          monster_dmg=skeleton_dmg, monster_health=skeleton_health, monster_name=skeleton_name)
     sleep(1)
     os.system('cls')
 
@@ -970,7 +984,7 @@ if door_choice_two == "left":
     troll_art()
     troll_description()
     fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
-                monster_dmg=troll_dmg, monster_health=troll_health, monster_name=troll_name)
+          monster_dmg=troll_dmg, monster_health=troll_health, monster_name=troll_name)
     sleep(1)
     os.system('cls')
 
@@ -979,7 +993,7 @@ if door_choice_two == "right":
     ghost_art()
     ghost_description()
     fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
-                monster_dmg=ghost_dmg, monster_health=ghost_health, monster_name=ghost_name)
+          monster_dmg=ghost_dmg, monster_health=ghost_health, monster_name=ghost_name)
     sleep(1)
     os.system('cls')
 
@@ -992,7 +1006,7 @@ if door_choice_three == "right":
     minotaur_art()
     minotaur_description()
     fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
-                monster_dmg=minotaur_dmg, monster_health=troll_health, monster_name=troll_name)
+          monster_dmg=minotaur_dmg, monster_health=troll_health, monster_name=troll_name)
     sleep(1)
     os.system('cls')
 if door_choice_three == "center":
@@ -1001,7 +1015,7 @@ if door_choice_three == "center":
     vampire_description()
     # add description of fight
     fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
-                monster_dmg=vampire_dmg, monster_health=vampire_health, monster_name=vampire_name)
+          monster_dmg=vampire_dmg, monster_health=vampire_health, monster_name=vampire_name)
     sleep(1)
     os.system('cls')
 
@@ -1011,7 +1025,7 @@ if door_choice_three == "left":
     minotaur_description()
     # add description of fight
     fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
-                monster_dmg=minotaur_dmg, monster_health=minotaur_health, monster_name=minotaur_name)
+          monster_dmg=minotaur_dmg, monster_health=minotaur_health, monster_name=minotaur_name)
     sleep(1)
     os.system('cls')
 
@@ -1023,9 +1037,8 @@ if boss_door == "open":
     dragon_art()
     dragon_description()
     fight(hero_stats=hero_stats, hero_items=hero_items, hero_attacks=hero_attacks,
-                monster_dmg=dragon_dmg, monster_health=dragon_health, monster_name=dragon_name)
+          monster_dmg=dragon_dmg, monster_health=dragon_health, monster_name=dragon_name)
 ending_scene()
 ending_text(player)
-sleep(2)
 artwork()
 exit()

@@ -4,7 +4,7 @@ from time import sleep
 def slowprint(msg):
     for c in msg:
         print(c, end="", flush=True)
-        sleep(0.06)
+        sleep(0.02)
     print()
 
 
@@ -20,7 +20,6 @@ def goblin_description():
 def skeleton_description():
     slowprint("You walk through the door to see a skeleton waiting for you,\n"
               "The skeleton is a common monster,\n"
-              "They are mostly seen in graveyards or in dungeons,\n"
               "This skeleton is wielding an axe and a shield\n"
               "The skeleton rushes at you preparing to strike")
 
@@ -30,7 +29,6 @@ def troll_description():
               "the troll has a large nose and is covered with moss\n"
               "you suspect that the troll is at least four times your height\n"
               "you take the time to look around at your surroundings\n"
-              "you see that you are in a large cavern,\n"
               "as you are looking around, the door you came from slams shut awaking the troll\n"
               "The troll seems to be very hungry, and wants to make you its dinner\n")
 
@@ -41,7 +39,6 @@ def vampire_description():
               "you suspect that there is a vampire in the coffin and prepare to fight\n"
               "as you walk towards the coffin the vampire launches itself into the air\n"
               "The vampire is dressed in an all black victorian suit with a black and red cape\n"
-              "The vampire's fangs are large and sharp \n"
               "the vampire is preparing to feast on your body")
 
 
@@ -53,11 +50,11 @@ def ghost_description():
 
 
 def dragon_description():
-    slowprint("you open the final door and you see a large hoard of gold,\n"
-              "you sense movement in the pile of gold and then you notice a large eye,\n"
-              "the creature lifts it's self from the pile of gold to revel that it's a dragon,\n"
-              "the dragon has scales the color of blood and fangs that are twice the size of your sword\n"
-              "you need to quickly kill the dragon before it kills you and escapes")
+    print("you open the final door and you see a large hoard of gold,\n"
+          "you sense movement in the pile of gold the creature lifts it's self from the pile of gold to revel "
+          "that it's a dragon,\n "
+          "the dragon has scales the color of blood and fangs that are twice the size of your sword\n"
+          "you need to quickly kill the dragon before it kills you and escapes")
 
 
 def minotaur_description():

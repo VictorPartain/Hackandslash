@@ -1,6 +1,6 @@
 def hero_stats():
     return {
-        "dmg": 100,
+        "dmg": 200,
         "health": 500,
         "defense": 30,
     }

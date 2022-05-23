@@ -4,7 +4,7 @@ from time import sleep
 def slowprint(msg):
     for c in msg:
         print(c, end="", flush=True)
-        sleep(0.01)
+        sleep(0.02)
     print()
 
 

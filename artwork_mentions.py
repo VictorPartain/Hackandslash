@@ -4,12 +4,12 @@ from time import sleep
 def slowprint(msg):
     for c in msg:
         print(c, end="", flush=True)
-        sleep(0.06)
+        sleep(0.001)
     print()
 
 
 def artwork():
-    slowprint("Dragon was created by James Goodwin\n"
+    print("Dragon was created by James Goodwin\n"
               "Goblin was created by https://ascii.co.uk/art/goblin\n"
               "Troll created by Veronica Karlsson\n"
               "Skeleton created by Nabis\n"
@@ -24,3 +24,4 @@ def artwork():
               "Ascii text was created using https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type"
               "%20Something%20\n"
               "")
+    print("PLEASE NOTE THAT THIS IS A SPEED UP VERSION OF THE CODE AND NOT WHAT THE CODE LOOKS LIKE NORMALLY")
