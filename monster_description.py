@@ -50,7 +50,7 @@ def ghost_description():
 
 
 def dragon_description():
-    print("you open the final door and you see a large hoard of gold,\n"
+    slowprint("you open the final door and you see a large hoard of gold,\n"
           "you sense movement in the pile of gold the creature lifts it's self from the pile of gold to revel "
           "that it's a dragon,\n "
           "the dragon has scales the color of blood and fangs that are twice the size of your sword\n"

@@ -31,7 +31,6 @@ player = intro.name_of_adventurer()
 os.system('cls')
 slowprint(f"Oh-hh a worthy name, {player} \nworthy of the champion")
 intro.intro_to_game_part_two(player)
-intro.intro_three(player)
 goblin_health = monster.goblin_stats()["goblin_health"]
 goblin_name = monster.goblin_stats()["name"]
 goblin_dmg = monster.goblin_stats()["goblin_dmg"]
@@ -108,7 +107,8 @@ while True:
         break
     else:
         slowprint("you need to chose a hero\n Barbarian \n Mage \n Hunter")
-
+intro.intro_three(player)
+os.system('cls')
 counter = hero_items["health_potion"]["uses"]
 os.system('cls')
 door.two_door_art()
